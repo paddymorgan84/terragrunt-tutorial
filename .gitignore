@@ -1,0 +1,4 @@
+# Terraform
+**/.terraform
+**/terraform.tfstate.backup
+remote-state/terraform.tfstate
