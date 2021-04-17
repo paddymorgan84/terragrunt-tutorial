@@ -32,3 +32,13 @@ If you subsequently wanted to tear down everything you had, you can run:
 ```bash
 terragrunt run-all destroy
 ```
+
+## Parallelism
+
+Another nice feature of Terragrunt is when you do run commands such as `run-all`, it will run as many of the modules that have `terragrunt.hcl` files as possible in parallel. Terragrunt doesn't actually put a constraint on this, which is a blessing and a curse. Your infrastructure deployment times will be faster, but if you're not careful you can get rate limited by your provider, so use it with caution.
+
+If you do start to experience rate limits, you can specify the `--terragrunt-parallelism` flag:
+
+```bash
+terragrunt run-all apply --terragrunt-parallelism 1
+```
