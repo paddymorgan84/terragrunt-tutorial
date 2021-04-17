@@ -1,6 +1,6 @@
-variable "registry_name" {
-  default     = "seplatform"
-  description = "The container registry name"
+variable "storage_account_name" {
+  default     = "notanotherstorageaccount"
+  description = "The storage account name"
 }
 
 variable "resource_group_name" {

@@ -42,3 +42,9 @@ If you do start to experience rate limits, you can specify the `--terragrunt-par
 ```bash
 terragrunt run-all apply --terragrunt-parallelism 1
 ```
+
+## DRY CLI Flags
+
+It's quite likely that when you run terrafom you're running commands with extra arguments. For example, you may have some common variables that you pass for each module, or you may want to restrict parallelism to avoid rate limiting.
+
+With Terragrunt, you can specify an `extra_arguments` block that makes sure that commands that you repeat each and every time are always included.
