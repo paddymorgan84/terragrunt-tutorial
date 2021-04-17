@@ -52,3 +52,16 @@ With Terragrunt, you can specify an `extra_arguments` block that makes sure that
 ## Before and After Hooks
 
 Terragrunt gives you the ability to run commands before and after the execution of a Terraform commnand. For example, you may run a script to bootstrap your environment, or clean up after an apply has been run. You may want to copy files to certain locations, or even just add extra information that can be outputted as part of the terragrunt commands.
+
+## Auto-init
+
+Something that people will have had to do countless times when running Terraform is running `terraform init` prior to running any other Terraform command. Running this command initialises your working directory by installing provider plugins and initialising your backend configuration. A feature of Terragrunt is that you don't need to explicitly call `init`, it will do this automatically prior to any other commands being run.
+
+Generally auto-init works fine, but I have found occassions where it hasn't worked as expected. If you want to be totally sure that your modules are initialised before you apply/destroy/plan, you can add in your own before_hook to cover off the scenario.
+
+```hcl
+  before_hook "auto_init" {
+    commands = ["validate", "plan", "apply", "destroy", "workspace", "output", "import"]
+    execute  = ["terraform", "init"]
+  }
+```

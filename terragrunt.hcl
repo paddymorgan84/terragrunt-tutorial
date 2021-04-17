@@ -47,6 +47,12 @@ terraform {
     ]
   }
 
+  # Terragrunt auto-init isn't always reliable - run init regardless
+  before_hook "auto_init" {
+    commands = ["validate", "plan", "apply", "destroy", "workspace", "output", "import"]
+    execute  = ["terraform", "init"]
+  }
+
   before_hook "before_hook" {
     commands     = ["apply"]
     execute      = ["echo", "Applying my terraform"]
