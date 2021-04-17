@@ -11,3 +11,7 @@ Terraform is a great tool, but it does lend itself towards some duplication whic
 ## DRY Backend
 
 You can use your `terragrunt.hcl` files to reduce the duplication you have with terraform around your backend configuration. If you have a root `terragrunt.hcl` file, that can have the details around your backend configuration. Adding a child `terragrunt.hcl` file in each of the modules you want to run with the relevant configuration means that you can inherit the backend configuration outlined at the root.
+
+## DRY Providers
+
+You can use the [generate block](https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes#generate) in your root `terragrunt.hcl file` to inject common configuration files. One of the most common uses for it is to use it to generate your provider configuration. By adding the generate block in your root, you can delete the provider.tf files in your other directories. Whenever any terrafrunt command is called, the providers will be copied to the appropriate directories.

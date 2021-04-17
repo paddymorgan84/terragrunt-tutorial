@@ -2,3 +2,5 @@
 **/.terraform
 **/terraform.tfstate.backup
 remote-state/terraform.tfstate
+**/provider.tf
+!remote-state/provider.tf
