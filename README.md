@@ -48,3 +48,7 @@ terragrunt run-all apply --terragrunt-parallelism 1
 It's quite likely that when you run terrafom you're running commands with extra arguments. For example, you may have some common variables that you pass for each module, or you may want to restrict parallelism to avoid rate limiting.
 
 With Terragrunt, you can specify an `extra_arguments` block that makes sure that commands that you repeat each and every time are always included.
+
+## Before and After Hooks
+
+Terragrunt gives you the ability to run commands before and after the execution of a Terraform commnand. For example, you may run a script to bootstrap your environment, or clean up after an apply has been run. You may want to copy files to certain locations, or even just add extra information that can be outputted as part of the terragrunt commands.
