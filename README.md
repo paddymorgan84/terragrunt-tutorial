@@ -65,3 +65,38 @@ Generally auto-init works fine, but I have found occassions where it hasn't work
     execute  = ["terraform", "init"]
   }
 ```
+
+## CLI options
+
+Outside of the commands we've been using with Terragrunt, much of which mirrors the commands you would see with Terraform, there are a few particularly useful CLI options to use with Terragrunt as well. This list isn't exhaustive (you can find that [here](https://terragrunt.gruntwork.io/docs/reference/cli-options/#cli-options)), it's just a list of commands I have found useful in the past:
+
+```bash
+terragrunt run-all apply --terragrunt-non-interactive
+```
+
+This will stop interactive prompts being displayed, and will prompt all answers with a "yes". Particularly useful when running in CI/CD environments.
+
+```bash
+terragrunt run-all apply --terragrunt-working-dir registry
+```
+
+You can pass directories to Terragrunt to indicate where the Terraform command should run. Note that for any `*-all` commands, it will start from that directory but run any subsequent sub-folders with a `terragrunt.hcl` file.
+
+```bash
+terragrunt run-all apply --terragrunt-exclude-dir registry
+terragrunt run-all apply --terragrunt-include-dir registry
+```
+
+The commands allow you to explicitly exclude and include certain modules (and their dependencies).
+
+```bash
+terragrunt run-all apply --terragrunt-parallelism 1
+```
+
+When passed in, limit the number of modules that are run concurrently to this number during `*-all` commands. Note that this parallelism is markedly different from the one you specify using Terraform directly. With Terraform, the paralellism indicates running resource creation concurrently. With Terragrunt, it indicates running whole modules concurrently.
+
+```bash
+terragrunt run-all apply --terragrunt-log-level trace
+```
+
+If you want some more detail in your output, you can modify the log levels to do so.
