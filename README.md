@@ -12,9 +12,13 @@ Terraform is a great tool, but it does lend itself towards some duplication whic
 
 You can use your `terragrunt.hcl` files to reduce the duplication you have with terraform around your backend configuration. If you have a root `terragrunt.hcl` file, that can have the details around your backend configuration. Adding a child `terragrunt.hcl` file in each of the modules you want to run with the relevant configuration means that you can inherit the backend configuration outlined at the root.
 
+- Commit [here](https://github.com/paddymorgan84/terragrunt-tutorial/commit/2345a4cba4e73330fb809b4676e6ad9651dc1de3)
+
 ## DRY Providers
 
 You can use the [generate block](https://terragrunt.gruntwork.io/docs/reference/config-blocks-and-attributes#generate) in your root `terragrunt.hcl file` to inject common configuration files. One of the most common uses for it is to use it to generate your provider configuration. By adding the generate block in your root, you can delete the provider.tf files in your other directories. Whenever any terrafrunt command is called, the providers will be copied to the appropriate directories.
+
+- Commit [here](https://github.com/paddymorgan84/terragrunt-tutorial/commit/fec1da99dee5d0ff985de452175a586dc2348efa)
 
 ## Executing on multiple modules
 
@@ -49,9 +53,13 @@ It's quite likely that when you run terrafom you're running commands with extra 
 
 With Terragrunt, you can specify an `extra_arguments` block that makes sure that commands that you repeat each and every time are always included.
 
+- Commit [here](https://github.com/paddymorgan84/terragrunt-tutorial/commit/ae3c882673b9faa979ddeac0474a00e85c202a68)
+
 ## Before and After Hooks
 
 Terragrunt gives you the ability to run commands before and after the execution of a Terraform commnand. For example, you may run a script to bootstrap your environment, or clean up after an apply has been run. You may want to copy files to certain locations, or even just add extra information that can be outputted as part of the terragrunt commands.
+
+- Commit [here](https://github.com/paddymorgan84/terragrunt-tutorial/commit/c30c21ed81bf9c1e4df46ba14a9d8445e34996df)
 
 ## Auto-init
 
@@ -65,6 +73,8 @@ Generally auto-init works fine, but I have found occassions where it hasn't work
     execute  = ["terraform", "init"]
   }
 ```
+
+- Commit [here](https://github.com/paddymorgan84/terragrunt-tutorial/commit/150d0b00227d08d012e93a73479dc5e5b54c4481)
 
 ## CLI options
 
