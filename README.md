@@ -8,6 +8,22 @@ This repo aims to give a tutorial around some of the features that Terragrunt of
 
 Terraform is a great tool, but it does lend itself towards some duplication which can get harder to manage the larger your solution becomes.
 
+## Running the code
+
+1. Create your remote state backend:
+
+```bash
+> cd remote-state/
+> terraform init
+> terraform apply
+```
+
+2. Create your registry and storage
+
+```bash
+> terragrunt run-all apply
+```
+
 ## DRY Backend
 
 You can use your `terragrunt.hcl` files to reduce the duplication you have with terraform around your backend configuration. If you have a root `terragrunt.hcl` file, that can have the details around your backend configuration. Adding a child `terragrunt.hcl` file in each of the modules you want to run with the relevant configuration means that you can inherit the backend configuration outlined at the root.
