@@ -13,3 +13,30 @@ Terraform is a great tool, but it does lend itself towards some duplication whic
 The [main branch](https://github.com/paddymorgan84/terragrunt-tutorial/tree/main) shows you the infrastructure pre-terragrunt.
 
 The [terragrunt branch](https://github.com/paddymorgan84/terragrunt-tutorial/tree/terragrunt) shows you all of the examples, with updated `README.md` for details
+
+## Running the code
+
+1. Create your remote state backend:
+
+```bash
+> cd remote-state/
+> terraform init
+> terraform apply
+```
+
+2. Create your example registry:
+
+```bash
+> cd registry/
+> terraform init
+> terraform apply
+```
+
+3. Create your example storage:
+
+```bash
+> cd storage/
+> terraform init
+> terraform apply
+```
+
